@@ -1,0 +1,20 @@
+{
+  "name": "note-taking-backend",
+  "version": "1.0.0",
+  "description": "Secure Note-Taking Application Backend",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^18.0.9",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.12.0"
+  }
+}
+

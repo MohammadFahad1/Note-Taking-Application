@@ -1,0 +1,37 @@
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: note_taking_mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  backend:
+    build: ./Backend
+    container_name: note_taking_backend
+    restart: always
+    ports:
+      - "8008:8008"
+    environment:
+      - PORT=8008
+      - MONGO_URI=mongodb://mongodb:27017/notetaking
+      - JWT_SECRET=supersecretjwtsecretkey
+    depends_on:
+      - mongodb
+
+  frontend:
+    build: ./Frontend
+    container_name: note_taking_frontend
+    restart: always
+    ports:
+      - "8009:8009"
+    environment:
+      - VITE_API_URL=http://localhost:8008/api
+    depends_on:
+      - backend
+
+volumes:
+  mongodb_data:
+
