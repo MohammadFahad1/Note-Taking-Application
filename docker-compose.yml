@@ -28,7 +28,7 @@ services:
     ports:
       - "8009:8009"
     environment:
-      - VITE_API_URL=http://localhost:8008/api
+      - VITE_API_URL=${VITE_API_URL:-}
     depends_on:
       - backend
 

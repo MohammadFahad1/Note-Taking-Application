@@ -1,13 +1,20 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
-const API_BASE =
-  import.meta.env.VITE_API_URL ||
-  (typeof window !== 'undefined' &&
-  window.location.hostname !== 'localhost' &&
-  window.location.hostname !== '127.0.0.1'
-    ? `${window.location.protocol}//${window.location.hostname}:8008/api`
-    : 'http://localhost:8008/api');
+const getApiBase = () => {
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL;
+  }
+  if (typeof window !== 'undefined') {
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      return 'http://localhost:8008/api';
+    }
+    return `${window.location.protocol}//nta-api.fahadbd.com/api`;
+  }
+  return 'https://nta-api.fahadbd.com/api';
+};
+
+const API_BASE = getApiBase();
 
 function App() {
   const [user, setUser] = useState(() => {

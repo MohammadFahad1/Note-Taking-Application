@@ -15,8 +15,8 @@ To build and run the entire platform with persistent storage:
 docker compose up -d --build
 ```
 
-- **Frontend:** [http://localhost:8009](http://localhost:8009)
-- **Backend API:** [http://localhost:8008](http://localhost:8008)
+- **Frontend:** [http://localhost:8009](http://localhost:8009) (or `http://nta.fahadbd.com`)
+- **Backend API:** [http://localhost:8008](http://localhost:8008) (or `https://nta-api.fahadbd.com`)
 - **MongoDB:** `localhost:27017`
 
 Data is persisted inside the `mongodb_data` Docker volume across rebuilds and container restarts.
